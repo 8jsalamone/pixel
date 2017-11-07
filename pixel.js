@@ -35,10 +35,10 @@ function Pixel(r,g,b){
         }
     };
 
-    this.brighten = function(ns){
-        this.red= this.red+n
-        this.blue= this.green+n
-        this.green= this.blue+n
+    this.brighten = function(n){
+        this.red= this.red+this.red*n;
+        this.blue= this.green+this.green*n;
+        this.green= this.blue+this.blue*n;
         if(this.red>255){
             this.red=255
         }
@@ -59,12 +59,17 @@ function Pixel(r,g,b){
         }
     };
 
-    this.complement = function(n){
-        //code in here
+    this.complement = function(){
+      let r=255-this.red;
+      let g=255-this.green;
+      let b=255-this.blue;
+      return new Pixel(r,g,b)
+
     };
 
     this.grayScale = function(n){
-        //code in here
+      let grey = this.red+this.green+this.blue
+      return grey/3
     };
 
 
